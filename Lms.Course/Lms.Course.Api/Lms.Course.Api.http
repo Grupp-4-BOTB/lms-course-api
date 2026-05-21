@@ -1,6 +1,10 @@
-@Lms.Course.Api_HostAddress = http://localhost:5149
+@Lms.Course.Api_HostAddress = https://webapi-shiko-lms.azurewebsites.net
 
-GET {{Lms.Course.Api_HostAddress}}/weatherforecast/
+GET {{Lms.Course.Api_HostAddress}}/api/Courses
 Accept: application/json
 
 ###
+
+### Get popular courses
+GET {{Lms.Course.Api_HostAddress}}/api/Courses/popular
+Accept: application/json 

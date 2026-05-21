@@ -20,4 +20,25 @@ public class CoursesController : ControllerBase
         var courses = await _courseRepository.GetAllCoursesAsync();
         return Ok(courses);
     }
+
+    [HttpGet("{slug}")]
+    public async Task<IActionResult> GetCourseBySlug(string slug)
+    {
+        var course = await _courseRepository.GetCourseBySlugAsync(slug);
+
+        if (course != null)
+        {   
+            return Ok(course);
+        }
+        
+        return NotFound();
+    }
+
+    [HttpGet("popular")]
+    public async Task<IActionResult> GetPopularCourses() 
+    {
+        var courses = await _courseRepository.GetPopularCoursesAsync();
+
+        return Ok(courses);
+    }
 }

@@ -3,6 +3,7 @@ using Lms.Course.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lms.Course.Infrastructure.Migrations
 {
     [DbContext(typeof(CourseDbContext))]
-    partial class CourseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260521102811_AddCourseDescription")]
+    partial class AddCourseDescription
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,9 +41,6 @@ namespace Lms.Course.Infrastructure.Migrations
 
                     b.Property<string>("Duration")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Icon")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InstructorImage")

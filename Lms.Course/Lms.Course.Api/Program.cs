@@ -25,7 +25,7 @@ public class Program
         {
             options.AddPolicy("AllowNextJs", policy =>
             {
-                policy.WithOrigins("http://localhost:3000", "http://localhost:3001")
+                policy.WithOrigins("http://localhost:3000", "https://lms-shiko.vercel.app")
                       .AllowAnyMethod()
                       .AllowAnyHeader();
             });
@@ -34,11 +34,9 @@ public class Program
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
+        app.UseSwagger();
+        app.UseSwaggerUI();
+
 
         app.UseHttpsRedirection();
 
