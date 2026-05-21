@@ -6,4 +6,5 @@ public interface ICourseRepository
 {
     Task<List<CourseDto>> GetAllCoursesAsync();
     Task<CourseDto?> GetCourseBySlugAsync(string slug);
+    Task<List<PopularCourseDto>> GetPopularCoursesAsync();
 }

@@ -49,4 +49,20 @@ public class CourseRepository : ICourseRepository
             })
             .FirstOrDefaultAsync();
     }
+    public async Task<List<PopularCourseDto>> GetPopularCoursesAsync()
+    {
+        return await _context.Courses
+            .OrderByDescending(c => c.Rating)
+            .Take(4)
+            .Select(c => new PopularCourseDto
+            {
+                Id = c.Id,
+                Title = c.Title,
+                Description = c.Description ?? string.Empty,
+                Icon = c.Icon ?? string.Empty,
+                Href = $"/courses/{c.Slug}" 
+
+            })
+            .ToListAsync();
+    }
 }
