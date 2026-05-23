@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Lms.Course.Infrastructure.Persistence;
 using Lms.Course.Application.Interfaces;
 using Lms.Course.Infrastructure.Repositories;
+using Lms.Course.Application.Services;
 
 namespace Lms.Course.Api;
 
@@ -21,6 +22,8 @@ public class Program
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
         builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+        builder.Services.AddScoped<ICourseService, CourseService>();
+
         builder.Services.AddCors(options =>
         {
             options.AddPolicy("AllowNextJs", policy =>

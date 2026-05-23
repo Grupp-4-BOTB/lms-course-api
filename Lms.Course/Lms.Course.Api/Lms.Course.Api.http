@@ -7,4 +7,8 @@ Accept: application/json
 
 ### Get popular courses
 GET {{Lms.Course.Api_HostAddress}}/api/Courses/popular
-Accept: application/json 
+Accept: application/json
+
+### Get course by slug
+GET {{Lms.Course.Api_HostAddress}}/api/Courses/digital-marketing
+Accept: application/json

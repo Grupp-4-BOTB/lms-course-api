@@ -12,4 +12,6 @@ public class CourseDto
     public decimal Rating { get; set; }
     public int LessonsCount { get; set; }
     public string Duration { get; set; } = null!;
+
+    public CourseOverviewDto? CourseOverview { get; set; }
 }

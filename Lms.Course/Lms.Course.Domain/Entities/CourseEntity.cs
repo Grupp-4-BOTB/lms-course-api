@@ -15,4 +15,6 @@ public class CourseEntity
     public string Duration { get; set; } = null!;
     public string? Icon { get; set; }
 
+    public CourseOverviewEntity? CourseOverview { get; set; }
+
 }
