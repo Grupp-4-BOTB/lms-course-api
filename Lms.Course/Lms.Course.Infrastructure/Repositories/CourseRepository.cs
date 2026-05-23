@@ -45,7 +45,14 @@ public class CourseRepository : ICourseRepository
                 InstructorName = c.InstructorName,
                 Rating = c.Rating,
                 LessonsCount = c.LessonsCount,
-                Duration = c.Duration
+                Duration = c.Duration,
+
+                CourseOverview = c.CourseOverview == null? null : new CourseOverviewDto 
+                {
+                    DetailImage = c.CourseOverview.DetailImage,
+                    Description = c.CourseOverview.Description,
+                    KeyPoints = c.CourseOverview.KeyPoints
+                }
             })
             .FirstOrDefaultAsync();
     }

@@ -7,24 +7,24 @@ namespace Lms.Course.Api.Controllers;
 [Route("api/[controller]")]
 public class CoursesController : ControllerBase
 {
-    private readonly ICourseRepository _courseRepository;
+    private readonly ICourseService _courseService;
 
-    public CoursesController(ICourseRepository courseRepository)
+    public CoursesController(ICourseService courseService)
     {
-        _courseRepository = courseRepository;
+        _courseService = courseService;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetCourses()
     {
-        var courses = await _courseRepository.GetAllCoursesAsync();
+        var courses = await _courseService.GetAllCoursesAsync();
         return Ok(courses);
     }
 
     [HttpGet("{slug}")]
     public async Task<IActionResult> GetCourseBySlug(string slug)
     {
-        var course = await _courseRepository.GetCourseBySlugAsync(slug);
+        var course = await _courseService.GetCourseBySlugAsync(slug);
 
         if (course != null)
         {   
@@ -37,7 +37,7 @@ public class CoursesController : ControllerBase
     [HttpGet("popular")]
     public async Task<IActionResult> GetPopularCourses() 
     {
-        var courses = await _courseRepository.GetPopularCoursesAsync();
+        var courses = await _courseService.GetPopularCoursesAsync();
 
         return Ok(courses);
     }

@@ -9,6 +9,7 @@ public class CourseDbContext : DbContext
     {
     }
     public DbSet<CourseEntity> Courses { get; set; } = null!;
+    public DbSet<CourseOverviewEntity> CourseOverviews { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -100,6 +101,23 @@ public class CourseDbContext : DbContext
                 Rating = 4.5m,
                 LessonsCount = 24,
                 Duration = "26 hr 15 min",
+            }
+        );
+
+
+        modelBuilder.Entity<CourseEntity>()
+            .HasOne(c => c.CourseOverview)
+            .WithOne(co => co.Course)
+            .HasForeignKey<CourseOverviewEntity>(co => co.CourseId);
+
+        modelBuilder.Entity<CourseOverviewEntity>().HasData(
+            new CourseOverviewEntity
+            {
+                Id = 1,
+                CourseId = 3,
+                DetailImage = "/images/courses/course-overview-digital.svg",
+                Description = "The class is marketing to help you master the foundation of digital marketing. Through practical lessons and real world case studies. You'll learn how to solve - problem creatively and build impactful solutions.\r\nThis course is designed to help you build a strong understanding of digital marketing from the ground up. Through practical lessons, hands-on exercises, and real-world case studies, you’ll learn how modern brands attract, engage, and convert audiences online.",
+                KeyPoints = "Set your marketing goals;Identify your target audience;Choose the right platform;Create compelling content;Launch and monitor your campaign;Pinpoint specific demographics and interests;Often lower cost than traditional advertising;Track performance in real-time"
             }
         );
     }
