@@ -11,6 +11,9 @@ public class CourseDbContext : DbContext
     public DbSet<CourseEntity> Courses { get; set; } = null!;
     public DbSet<CourseOverviewEntity> CourseOverviews { get; set; } = null!;
 
+    public DbSet<InstructorEntity> Instructors { get; set; } = null!;
+
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<CourseEntity>()
@@ -162,5 +165,9 @@ public class CourseDbContext : DbContext
                 KeyPoints = "Understand cybersecurity basics;Identify security threats;Protect network systems;Learn encryption concepts;Manage secure connections;Understand firewalls;Prevent common attacks;Improve system security"
             }
         );
+        modelBuilder.Entity<CourseEntity>()
+           .HasOne(c => c.Instructor)
+           .WithOne(i => i.Course)
+           .HasForeignKey<InstructorEntity>(i => i.CourseId);
     }
 }

@@ -23,6 +23,8 @@ public class Program
 
         builder.Services.AddScoped<ICourseRepository, CourseRepository>();
         builder.Services.AddScoped<ICourseService, CourseService>();
+        builder.Services.AddScoped<IInstructorRepository, InstructorRepository>();
+        builder.Services.AddScoped<IInstructorService, InstructorService>();
 
         builder.Services.AddCors(options =>
         {

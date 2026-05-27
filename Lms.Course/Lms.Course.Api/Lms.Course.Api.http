@@ -12,3 +12,7 @@ Accept: application/json
 ### Get course by slug
 GET {{Lms.Course.Api_HostAddress}}/api/Courses/digital-marketing
 Accept: application/json
+
+### Get course by slug
+GET {{Lms.Course.Api_HostAddress}}/api/Courses/digital-marketing/instructor
+Accept: application/json
