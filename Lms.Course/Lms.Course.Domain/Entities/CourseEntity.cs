@@ -16,5 +16,6 @@ public class CourseEntity
     public string? Icon { get; set; }
 
     public CourseOverviewEntity? CourseOverview { get; set; }
+    public InstructorEntity? Instructor { get; set; }
 
 }
