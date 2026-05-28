@@ -3,8 +3,6 @@
 public class InstructorDto
 {
     public Guid Id { get; set; }
-    public string InstructorImage { get; set; } = null!;
-    public string InstructorName { get; set; } = null!;
 
     public string InstructorTitle { get; set; } = null!;
 

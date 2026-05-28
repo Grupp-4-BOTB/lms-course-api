@@ -21,8 +21,6 @@ public class InstructorRepository : IInstructorRepository
             .Select(c => new InstructorDto
             {
                 Id = c.Instructor!.Id,
-                InstructorImage = c.Instructor.InstructorImage,
-                InstructorName = c.Instructor.InstructorName,
                 InstructorTitle = c.Instructor.InstructorTitle,
                 Biography = c.Instructor.Biography
             })
